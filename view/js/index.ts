@@ -1,4 +1,4 @@
-import { tagMaker } from "../../models/tagMaker";
+import tagMaker from "../../models/tagMaker.js";
 
 const bodyProps = {
   style: "width:100vw; height:100vh",

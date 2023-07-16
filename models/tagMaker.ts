@@ -1,4 +1,4 @@
-export const tagMaker = (tag: string, parent: Node, props: object | null = null) => {
+const tagMaker = (tag: string, parent: Node, props: object | null = null) => {
   const element = document.createElement(tag);
   parent.appendChild(element);
   if (typeof props === "object") {
@@ -6,6 +6,8 @@ export const tagMaker = (tag: string, parent: Node, props: object | null = null)
   }
   return element;
 };
+
+export default tagMaker;
 
 // 클래스 방식으로도 만들기
 // class TagMaker{
