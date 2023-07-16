@@ -62,8 +62,9 @@ const input = tagMaker("input", form, submitProps);
 
 let count = 0;
 
-form.addEventListener("submit", () => {
+form.addEventListener("submit", (event) => {
   if (count === 0) {
+    event.preventDefault();
     textOne.style.display = "none";
     Box.style.height = "80%";
     textTitle.innerText =
