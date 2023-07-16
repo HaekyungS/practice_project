@@ -1,0 +1,15 @@
+{
+  "name": "practice_project",
+  "version": "1.0.0",
+  "description": "프로젝트 진행 전, 연습용으로 제작된 레포로 다양한 프레임워크 및 라이브러리를 프로젝트 도입 전 테스트 해보기 위해 제작되었습니다.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "developer_zoe",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
