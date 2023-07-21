@@ -1,13 +1,5 @@
-// import tagMaker from "../models/tagMaker.js";
-
-const tagMaker = (tag, parent, props = null) => {
-  const element = document.createElement(tag);
-  parent.appendChild(element);
-  if (typeof props === "object") {
-    Object.assign(element, props);
-  }
-  return element;
-};
+import tagMaker from "../../models/tagMaker.js";
+import { problems } from "../../data/problem.js";
 
 const bodyProps = {
   style: "width:100vw; height:100vh",
@@ -72,5 +64,13 @@ form.addEventListener("submit", (event) => {
     input.value = "ㄱㅂㅈㄱ";
     return count++;
   } else {
+    if (count < problems.length) {
+      event.preventDefault();
+      textOne.style.display = "none";
+      Box.style.height = "80%";
+      textTitle.innerText = problems[count - 1].problem;
+      input.value = "NEXT";
+      count++;
+    }
   }
 });

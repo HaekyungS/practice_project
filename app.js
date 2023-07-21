@@ -1,5 +1,5 @@
 import * as http from "http";
-import fs from "fs";
+import fs, { write } from "fs";
 import path from "path";
 import { writeHead } from "./models/response.js";
 
@@ -19,8 +19,14 @@ const app = http
 
         writeHead(res, req.url, page);
       } else {
-        const page = fs.readFileSync(`${path.join(root, "view", req.url)}`);
-        writeHead(res, req.url, page);
+        if (req.url.includes("data") || req.url.includes("models")) {
+          console.log(req.url);
+          const page = fs.readFileSync(`${path.join(root, req.url)}`);
+          writeHead(res, req.url, page);
+        } else {
+          const page = fs.readFileSync(`${path.join(root, "view", req.url)}`);
+          writeHead(res, req.url, page);
+        }
       }
     } else if (req.method === "POST") {
     }
