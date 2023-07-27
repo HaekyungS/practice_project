@@ -75,32 +75,47 @@ form.addEventListener("submit", (event) => {
     if (count < problems.length) {
       textOne.style.display = "none";
       Box.style.height = "80%";
-      textTitle.innerText = problems[count - 1].problem;
+      textTitle.style.height = "10%";
+      textTitle.innerText = [count - 1] + "번째 문제";
+
       let exNum = [];
       if (!exDiv) {
         exDiv = tagMaker("div", Box, {
           style:
-            "width:80%;height:80%; display:flex; flex-direction:column; justify-content:center; align-itmes:center",
+            "width:80%;height:70%; display:flex; flex-direction:column; justify-content:center; align-itmes:center",
         });
       } else {
         while (exDiv.firstChild) {
           exDiv.removeChild(exDiv.firstChild);
         }
       }
+      const problemProps = {
+        style: "width:100%; height:20%; text-align:center",
+        innerText: problems[count - 1].problem,
+      };
+
+      tagMaker("div", exDiv, problemProps);
 
       for (let i = 0; i < problems[count - 1].ex.length; i++) {
         let exNumber = Math.floor(Math.random() * (problems[count - 1].ex.length - 1));
+
         if (exNum.find((element) => element === exNumber)) {
           i--;
         } else {
           const inputProps = {
             type: "radio",
+            id: "exam" + [i],
             name: "exam" + [count],
-            style: "width:100%; height:15%;",
           };
-          const input = tagMaker("input", exDiv, inputProps);
-          input.innerText = problems[count - 1].ex[exNumber];
-          console.log(exNumber, problems[count - 1].ex[exNumber]);
+          tagMaker("input", exDiv, inputProps);
+
+          const labelProps = {
+            style: "height:10%; size:15px; text-align:center",
+            for: "exam" + [i],
+            innerText: problems[count - 1].ex[exNumber],
+          };
+          tagMaker("label", exDiv, labelProps);
+
           exNum.push(exNumber);
         }
       }
