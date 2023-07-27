@@ -9,18 +9,17 @@ const root = path.resolve();
 const app = http
   .createServer((req, res) => {
     if (req.method === "GET") {
-      console.dir(req.url);
+      // console.dir(req.url);
       if (req.url === "/") {
-        console.log(root);
+        // console.log(root);
         const page = fs.readFileSync(`${path.join(root, "view", "html", "index.html")}`);
         writeHead(res, req.url, page);
       } else if (req.url?.includes("favicon")) {
         const page = "favicon";
-
         writeHead(res, req.url, page);
       } else {
         if (req.url.includes("data") || req.url.includes("models")) {
-          console.log(req.url);
+          // console.log(req.url);
           const page = fs.readFileSync(`${path.join(root, req.url)}`);
           writeHead(res, req.url, page);
         } else {
@@ -28,7 +27,6 @@ const app = http
           writeHead(res, req.url, page);
         }
       }
-    } else if (req.method === "POST") {
     }
   })
   .listen(1101, () => {
