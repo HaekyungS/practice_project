@@ -1,7 +1,7 @@
-const tagMaker = (tag: string, parent: Node, props: object | null = null) => {
+const tagMaker = (tag: string, parent: Node, props: object | null = null): Element => {
   const element = document.createElement(tag);
   parent.appendChild(element);
-  if (typeof props === "object") {
+  if (typeof props === 'object') {
     Object.assign(element, props);
   }
   return element;
