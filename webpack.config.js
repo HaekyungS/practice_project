@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './view/index.ts',
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
@@ -12,25 +12,29 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript'
+            ]
             // @babel/preset-typescript를 추가합니다.
-          },
-        },
-      },
-    ],
+          }
+        }
+      }
+    ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'], // .tsx와 .jsx 확장자를 처리합니다.
+    extensions: ['.tsx', '.ts', '.js', '.jsx'] // .tsx와 .jsx 확장자를 처리합니다.
   },
   plugins: [
     new ESLintPlugin({
       fix: true,
-      extensions: ['ts', 'js'],
-    }),
+      extensions: ['ts', 'tsx', 'js', 'jsx']
+    })
   ],
 
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+    path: path.resolve(__dirname, 'dist')
+  }
 };
