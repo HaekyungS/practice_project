@@ -3,7 +3,7 @@
 
 export const problems = {
   1: {
-    problem: "",
-    exam: ["", "", "", ""],
-  },
+    problem: '',
+    exam: ['', '', '', '']
+  }
 };
