@@ -20,11 +20,26 @@ module.exports = {
             // @babel/preset-typescript를 추가합니다.
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: './postcss.config.js'
+              }
+            }
+          }
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'] // .tsx와 .jsx 확장자를 처리합니다.
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.css'] // .tsx와 .jsx 확장자를 처리합니다.
   },
   plugins: [
     new ESLintPlugin({
