@@ -5,7 +5,11 @@ module.exports = {
     extend: {
       colors: {
         main: '#9C2F3A',
-        grey: '#D9D9D9'
+        gray: '#D9D9D9'
+      },
+      screens: {
+        title: '50px',
+        subtitle: '35px'
       }
     }
   },
